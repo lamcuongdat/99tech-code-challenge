@@ -96,8 +96,11 @@ const WalletPage: React.FC<Props> = (props: Props) => {
                 const rightPriority = getPriority(rhs.blockchain);
                 if (leftPriority > rightPriority) {
                     return -1;
-                } else if (rightPriority > leftPriority) {
+                } else if (leftPriority < rightPriority) {
                     return 1;
+                } else {
+                    // If priorities are equal, sort by amount descending
+                    return rhs.amount - lhs.amount;
                 }
             });
         // getPriority does not need to put in the dependency array as it is a pure function
