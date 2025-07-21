@@ -1,9 +1,111 @@
 @use "~bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+:root {
+  --bs-primary: #0085FF;
+  --bs-border-radius: 20px;
+  --bs-border-color: var(--bs-gray-300);
+  --bs-input-card-bg: var(--bs-gray-100);
+  --bs-body-color: #212121;
+  --primary-linear-gradient-start: #ECFCFF;
+  --primary-linear-gradient-end: #FFD9E7;
+  --primary-linear-gradient: linear-gradient(
+                  45deg,
+                  #FFF 0%,
+                  var(--primary-linear-gradient-start) 45%,
+                  var(--primary-linear-gradient-end) 100%
+  );
+}
 body {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   min-width: 360px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+.btn {
+  --bs-btn-line-height: 3;
+}
+
+.dropdown-menu {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.dropdown {
+  .btn {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    min-width: 100px;
+    width: fit-content;
+    text-align: end;
+    background: var(--primary-linear-gradient);
+    border-color: var(--bs-border-color);
+  }
+}
+
+.dropdown-toggle {
+  &::after {
+    display: none;
+  }
+}
+
+.form-control {
+  @include bootstrap.media-breakpoint-up(md) {
+    font-size: 2rem;
+  }
+}
+
+.input-card {
+  border-radius: var(--bs-border-radius);
+  background: var(--bs-light);
+  &.from {
+    padding: 2rem 2rem 3rem 2rem;
+  }
+
+  &.to {
+    padding: 3rem 2rem 2rem 2rem;
+  }
+}
+
+.swap-arrow {
+  --swap-arrow-size: 60px;
+  --swap-arrow-gap: 0.5rem;
+  font-size: 2rem;
+  position: relative;
+  background: var(--bs-gray-100);
+  width: var(--swap-arrow-size);
+  height: var(--swap-arrow-size);
+  margin-inline: auto;
+  margin-block: calc(-1 * var(--swap-arrow-size) / 2 - calc(var(--swap-arrow-gap) / 2));
+  border: var(--swap-arrow-gap) solid white;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  color: var(--bs-body-color);
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: var(--bs-body-color);
+}
+
+.token-img {
+  --token-img-size: 24px;
+  @include bootstrap.media-breakpoint-up(md) {
+    --token-img-size: 36px;
+  }
+  width: var(--token-img-size);
+  height: var(--token-img-size);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  border: 0.25rem solid var(--bs-white);
+  box-sizing: content-box;
+  background: var(--bs-white);
 }

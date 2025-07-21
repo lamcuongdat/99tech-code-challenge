@@ -9,6 +9,7 @@ export default {
 	resolve: {
 		alias: {
 			'~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
+			'~bootstrap-icons': resolve(__dirname, 'node_modules/bootstrap-icons'),
 		}
 	},
 	server: {

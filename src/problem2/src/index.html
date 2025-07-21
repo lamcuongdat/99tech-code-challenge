@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Currency Swap</title>
-  <style>
-    .swap-arrow { font-size: 2rem; color: #0d6efd; }
-    .loading-spinner { display: flex; align-items: center; justify-content: center; height: 48px; }
-  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Currency Swap</title>
 </head>
 <body class="bg-light">
 <div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form id="swap-form" class="card p-4 shadow-sm">
-        <h3 class="mb-4 text-center">Currency Swap</h3>
-        <div class="mb-3">
-          <label class="form-label">From</label>
-          <div class="dropdown" id="from-token-dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="from-token-btn" data-bs-toggle="dropdown" aria-expanded="false">
-              Select token
-            </button>
-            <ul class="dropdown-menu w-100" id="from-token-menu" aria-labelledby="from-token-btn"></ul>
-          </div>
-        <div class="mb-3">
-          <label class="form-label">Amount to send</label>
-          <input id="input-amount" type="number" min="0" step="any" class="form-control" required>
-          <div id="input-error" class="text-danger small mt-1"></div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form id="swap-form" class="card p-4 shadow-sm">
+                <h3 class="mb-4 text-center">Currency Swap</h3>
+                <div class="mb-3">
+                    <div class="input-card from">
+                        <label class="form-label" for="input-amount">Amount to send</label>
+                        <div class="input-group">
+                            <input id="input-amount" type="number" min="0" step="any" class="form-control" required>
+                            <div class="dropdown" id="from-token-dropdown">
+                                <button class="btn dropdown-toggle btn-light" type="button"
+                                        id="from-token-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select token
+                                </button>
+                                <ul class="dropdown-menu w-100" id="from-token-menu"
+                                    aria-labelledby="from-token-btn"></ul>
+                            </div>
+                        </div>
+                        <div id="input-error" class="text-danger small mt-1"></div>
+                    </div>
+                    <div class="text-center swap-arrow rounded-circle">
+                      <div id="arrow"><i class="bi bi-chevron-down"></i></div>
+                      <div id="loading" class="loading-spinner" style="display:none;">
+                          <div class="spinner-grow" role="status"></div>
+                      </div>
+                    </div>
+                    <div class="input-card to">
+                        <label class="form-label" for="output-amount">Amount to receive</label>
+                        <div class="input-group">
+                            <input id="output-amount" type="text" class="form-control" disabled>
+                            <div class="dropdown" id="to-token-dropdown">
+                                <button class="btn dropdown-toggle btn-light" type="button"
+                                        id="to-token-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select token
+                                </button>
+                                <ul class="dropdown-menu w-100" id="to-token-menu" aria-labelledby="to-token-btn"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="form-error" class="alert alert-danger mt-2" style="display: none"></div>
+                    <div id="form-success" class="alert alert-success mt-2" style="display: none"></div>
+                    <button id="swap-btn" type="submit" class="btn btn-primary w-100 mt-4 ">Confirm Swap
+                    </button>
+            </form>
         </div>
-        <div class="text-center mb-3">
-          <span class="swap-arrow">&#8595;</span>
-        </div>
-          <div class="mb-3">
-            <label class="form-label">To</label>
-            <div class="dropdown" id="to-token-dropdown">
-              <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="to-token-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                Select token
-              </button>
-              <ul class="dropdown-menu w-100" id="to-token-menu" aria-labelledby="to-token-btn"></ul>
-            </div>
-          </div>
-        <div class="mb-3">
-          <label class="form-label">Amount to receive</label>
-          <input id="output-amount" type="text" class="form-control" readonly>
-        </div>
-        <div id="form-error" class="text-danger small mb-2"></div>
-        <button id="swap-btn" type="submit" class="btn btn-primary w-100">CONFIRM SWAP</button>
-        <div id="loading" class="loading-spinner mt-3" style="display:none;">
-          <div class="spinner-border text-primary" role="status"></div>
-          <span class="ms-2">Processing...</span>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 <script type="module" src="script.js"></script>
 </body>
